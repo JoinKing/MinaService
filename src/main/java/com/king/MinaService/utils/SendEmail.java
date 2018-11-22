@@ -65,7 +65,7 @@ public class SendEmail {
      * @param content 邮件的内容
      * @return true 表示成功，false 表示失败
      */
-    public static boolean sendQQmail(String  sendTo1,String title1,String content1){
+    public  static boolean sendQQmail(String  sendTo,String title,String content){
         boolean bret = false;
         try
         {
@@ -73,9 +73,9 @@ public class SendEmail {
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.host", "smtp.qq.com");
             //你自己的邮箱                                   后面是邮箱的账号
-            props.put("mail.user", "280530171@qq.com");
+            props.put("mail.user", "191160217@qq.com");
             //你开启pop3/smtp时的验证码             后面是邮箱授权码
-            props.put("mail.password", "wpijdftmglkdbjec");
+            props.put("mail.password", "hwq6610085");
             props.put("mail.smtp.port", "25");
             props.put("mail.smtp.starttls.enable", "true");
             Authenticator authenticator = new Authenticator() {
@@ -94,12 +94,12 @@ public class SendEmail {
             InternetAddress form = new InternetAddress(username);
             message.setFrom(form);
 
-            InternetAddress to = new InternetAddress(sendTo1);
+            InternetAddress to = new InternetAddress(sendTo);
             message.setRecipient(RecipientType.TO, to);
             // 设置邮件标题
-            message.setSubject(title1);
+            message.setSubject(title);
             // 设置邮件的内容体
-            message.setContent(content1, "text/html;charset=UTF-8");
+            message.setContent(content, "text/html;charset=UTF-8");
             // 发送邮件
             Transport.send(message);
             //发送成功
@@ -111,5 +111,7 @@ public class SendEmail {
         //发送失败
         return bret;
     }
+
+
 }
 

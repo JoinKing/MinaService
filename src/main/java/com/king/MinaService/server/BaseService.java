@@ -5,6 +5,7 @@ public interface BaseService {
     int LOGIN_FAIl =201; //密码错误
     int LOGIN_NO_REGISTER =202;//账号未注册
     int LOGIN_YES_REGISTER =203;//账号已注册
+    int SEND_MISTAKE =204; //发送失败
     int PARMS_MIS =300; //参数错误
 
     String LOGINSUCCESS = "登陆成功";
@@ -12,4 +13,5 @@ public interface BaseService {
     String LOGINNOREGISTER ="账号未注册";
     String LOGINYESREGISTER ="账号已注册";
     String PARMSMIS ="参数错误";
+    String SENDMISTAKE ="发送失败";
 }
