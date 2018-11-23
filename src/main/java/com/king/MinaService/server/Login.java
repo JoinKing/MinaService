@@ -103,7 +103,6 @@ public class Login implements BaseService, TimePicker.OverCallback {
     }
 
     /**
-     *
      * @param phone
      * @param psd
      * @return
@@ -112,7 +111,7 @@ public class Login implements BaseService, TimePicker.OverCallback {
     public String getLogion(String phone, String psd) {
         UserInfoImpl userInfo = new UserInfoImpl();
 
-        if (null == phone || psd == null ) {
+        if (null == phone || psd == null) {
             if (null == phone) {
                 return ResuleUtils.getToJson(PARMS_MIS, "用户名不能为空", null);
             }
@@ -125,9 +124,9 @@ public class Login implements BaseService, TimePicker.OverCallback {
                 UserInfo user = userInfo.onFindById(phone);
                 if (null != user) {
                     //查询到数据源账号
-                    if (phone.equals(user.getUserName())&&psd.equals(user.getPassWord())){
+                    if (phone.equals(user.getUserName()) && psd.equals(user.getPassWord())) {
                         return ResuleUtils.getToJson(LOGIN_SUCCESS, LOGINSUCCESS, user);
-                    }else {
+                    } else {
                         return ResuleUtils.getToJson(LOGIN_FAIl, LOGINFAIl, null);
                     }
                 } else {
