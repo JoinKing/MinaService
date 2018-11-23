@@ -19,7 +19,7 @@ public class UserInfoImpl implements UserInfoDao{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "insert into userinfor(userName,passWord,nickName,headImage,age,sex,accountType,signature,userState)values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into userinfor(userName,passWord,nickName,headImage,age,sex,accountType,signature,userState,email)values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = DBUtils.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class UserInfoImpl implements UserInfoDao{
 			ps.setInt(7, user.getAccountType());
 			ps.setString(8, user.getSignature());
 			ps.setInt(9, user.getUserState());
+			ps.setString(10, user.getEmail());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +51,7 @@ public class UserInfoImpl implements UserInfoDao{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "update userinfor set userName=? passWord=?,nickName=?,headImage=?,age=?,sex=?,accountType=?,signature=?,userState=? where userName=?";
+		String sql = "update userinfor set userName=? passWord=?,nickName=?,headImage=?,age=?,sex=?,accountType=?,signature=?,userState=?,email=? where userName=?";
 		try {
 			conn = DBUtils.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -63,7 +64,8 @@ public class UserInfoImpl implements UserInfoDao{
 			ps.setInt(7, user.getAccountType());
 			ps.setString(8, user.getSignature());
 			ps.setInt(9, user.getUserState());
-			ps.setString(10, user.getUserName());
+			ps.setString(10, user.getEmail());
+			ps.setString(11, user.getUserName());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,7 +106,7 @@ public class UserInfoImpl implements UserInfoDao{
 		PreparedStatement ps = null;
 		UserInfo user = null;
 		ResultSet rs = null;
-		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState from userinfor where userName=?";
+		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState,email from userinfor where userName=?";
 		try {
 			conn = DBUtils.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -121,6 +123,7 @@ public class UserInfoImpl implements UserInfoDao{
 				user.setAccountType(rs.getInt(7));
 				user.setSignature(rs.getString(8));
 				user.setUserState(rs.getInt(9));
+				user.setEmail(rs.getString(10));
 			}
 
 		} catch (SQLException e) {
@@ -141,7 +144,7 @@ public class UserInfoImpl implements UserInfoDao{
 		UserInfo user = null;
 		ResultSet rs = null;
 		List<UserInfo> users = new ArrayList<UserInfo>();
-		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState from userinfor";
+		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState,email from userinfor";
 		try {
 			conn = DBUtils.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -157,6 +160,7 @@ public class UserInfoImpl implements UserInfoDao{
 				user.setAccountType(rs.getInt(7));
 				user.setSignature(rs.getString(8));
 				user.setUserState(rs.getInt(9));
+				user.setEmail(rs.getString(10));
 				users.add(user);
 			}
 

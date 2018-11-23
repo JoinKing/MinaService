@@ -12,8 +12,16 @@ public class UserInfo {
 	private int accountType = 0;
 	private String signature = "";
 	private int userState = 0;
-	
-	
+	private String email = "";
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

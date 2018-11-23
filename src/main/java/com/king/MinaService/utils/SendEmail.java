@@ -75,9 +75,9 @@ public class SendEmail {
             //你自己的邮箱                                   后面是邮箱的账号
             props.put("mail.user", "191160217@qq.com");
             //你开启pop3/smtp时的验证码             后面是邮箱授权码
-            props.put("mail.password", "hwq6610085");
+            props.put("mail.password", "vqfqivjjoqufbjib");
             props.put("mail.smtp.port", "25");
-            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.starttls.enable", "true");//vqfqivjjoqufbjib
             Authenticator authenticator = new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
                     String userName = props.getProperty("mail.user");

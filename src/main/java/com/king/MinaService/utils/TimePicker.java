@@ -1,6 +1,6 @@
 package com.king.MinaService.utils;
 
-public class TimePicker implements Runnable {
+public class TimePicker extends Thread {
     private boolean isOver;
 
     @Override
