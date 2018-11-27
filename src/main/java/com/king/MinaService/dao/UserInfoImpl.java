@@ -141,29 +141,29 @@ public class UserInfoImpl implements UserInfoDao{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement ps = null;
-		UserInfo user = null;
+
 		ResultSet rs = null;
 		List<UserInfo> users = new ArrayList<UserInfo>();
-		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState,email from userinfor";
+		String sql = "select * from  userinfor";
+//		String sql = "select userName,passWord,nickName,headImage,age,sex,accountType,signature,userState,email from userinfor";
 		try {
 			conn = DBUtils.getConnection();
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				user = new UserInfo();
-				user.setUserName(rs.getString(1));
-				user.setPassWord(rs.getString(2));
-				user.setNickName(rs.getString(3));
-				user.setHeadImage(rs.getString(4));
-				user.setAge(rs.getInt(5));
-				user.setSex(rs.getString(6));
-				user.setAccountType(rs.getInt(7));
-				user.setSignature(rs.getString(8));
-				user.setUserState(rs.getInt(9));
-				user.setEmail(rs.getString(10));
+			while(rs.next()) {
+				UserInfo user =  new UserInfo();
+				user.setUserName(rs.getString(2));
+				user.setPassWord("");
+				user.setNickName(rs.getString(4));
+				user.setHeadImage(rs.getString(5));
+				user.setAge(rs.getInt(6));
+				user.setSex(rs.getString(7));
+				user.setAccountType(rs.getInt(8));
+				user.setSignature(rs.getString(9));
+				user.setUserState(rs.getInt(10));
+				user.setEmail(rs.getString(11));
 				users.add(user);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new SQLException("查询全部数据失败");

@@ -11,6 +11,7 @@ public interface BaseService {
     int EXCEPTION =-1; //异常
 
     String SUCCESS = "成功";
+    String NODATA = "无数据";
     String LOGINSUCCESS = "登录成功";
     String LOGINFAIl ="密码错误";
     String LOGINNOREGISTER ="账号未注册";
